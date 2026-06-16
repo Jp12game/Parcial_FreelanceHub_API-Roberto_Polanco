@@ -20,7 +20,7 @@ export class CreateServiceDto {
   @MaxLength(500)
   description!: string;
 
-  @ApiProperty({example: 50.25})
+  @ApiProperty({example: 50})
   @IsNumber()
   @IsNotEmpty()
   price!: number;

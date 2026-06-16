@@ -20,7 +20,7 @@ export class Service {
   @Column()
   description!: string;
 
-  @ApiProperty({ example: 50.25})
+  @ApiProperty({ example: 50})
   @Column()
   price!: number;
 

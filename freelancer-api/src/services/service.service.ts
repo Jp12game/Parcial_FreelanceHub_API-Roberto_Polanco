@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { UsersService } from '../users/user.service';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { Service } from './service.entity';
@@ -29,9 +29,14 @@ export class ServicesService {
   }
 
   //me falta buscar por id
-  async findServicesById() {
+  async findServicesByName(providerName: string) {
     const services = await this.serviceRepository.find({
       relations: { provider: true },
+      where: {
+        provider: {
+          name: ILike(`%${providerName}%`),
+        },
+      },
       order: { id: 'DESC' },
     });
 
